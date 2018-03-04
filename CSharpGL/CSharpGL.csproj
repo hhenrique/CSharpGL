@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CSharpGL</RootNamespace>
     <AssemblyName>CSharpGL</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -23,6 +23,8 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DocumentationFile>bin\Debug\CSharpGL.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -215,6 +218,7 @@
     <Compile Include="Scene\Lights\TSpotLight.cs" />
     <Compile Include="Scene\Lights\__LightSetUniformsHelper.cs" />
     <Compile Include="Scene\Lights\__LightToMatrixHelper.cs" />
+    <Compile Include="Scene\Manipulaters\CameraManipulaters\RotationManipulater.cs" />
     <Compile Include="Scene\SceneNodes\ConcreteNodes\ClearStencil\ClearStencilModel.cs" />
     <Compile Include="Scene\SceneNodes\ConcreteNodes\ClearStencil\ClearStencilNode.cs" />
     <Compile Include="Scene\SceneNodes\ConcreteNodes\ClearStencil\ClearStencilNode.shader.cs" />

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System;   
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +23,8 @@ namespace TerrainLoading
                 var fs = new FragmentShader(frag);
                 var provider = new ShaderArray(vs, fs);
                 var map = new AttributeMap();
-                defaultBuilder = new RenderMethodBuilder(provider, map, new PolygonModeSwitch(PolygonMode.Line));
+                //defaultBuilder = new RenderMethodBuilder(provider, map, new PolygonModeSwitch(PolygonMode.Fill));
+                defaultBuilder = new RenderMethodBuilder(provider, map);
             }
 
             var node = new TerainNode(model, defaultBuilder);
@@ -37,6 +38,12 @@ namespace TerrainLoading
         {
         }
 
+        public bool RenderAsWireframe { get; set; }
+
+        private PolygonModeSwitch polygonMode = new PolygonModeSwitch(PolygonMode.Line);
+        private GLSwitch polygonOffsetState = new PolygonOffsetFillSwitch();
+
+
         protected override void DoInitialize()
         {
             base.DoInitialize();
@@ -47,7 +54,8 @@ namespace TerrainLoading
             program.SetUniform("scale", (TerainModel.TERRAIN_WIDTH + TerainModel.TERRAIN_DEPTH) * 0.08f);
 
             string folder = System.Windows.Forms.Application.StartupPath;
-            var image = new Bitmap(System.IO.Path.Combine(folder, "heightmap512x512.png"));
+//            var image = new Bitmap(System.IO.Path.Combine(folder, "heightmap512x512.png"));
+            var image = new Bitmap(System.IO.Path.Combine(folder, "superficie.png"));
             this.UpdateHeightmap(image);
         }
 
@@ -72,7 +80,23 @@ namespace TerrainLoading
             RenderMethod method = this.RenderUnit.Methods[0];
             ShaderProgram program = method.Program;
             program.SetUniform("MVP", projection * view * model);
-            method.Render();
+
+            if (this.RenderAsWireframe)
+            {
+                // render wireframe.
+                program.SetUniform("renderWireframe", true);
+                polygonMode.On();
+                polygonOffsetState.On();
+                method.Render();
+                polygonOffsetState.Off();
+                polygonMode.Off();
+            }
+            else
+            {
+                // render solid body.
+                program.SetUniform("renderWireframe", false);
+                method.Render();
+            }
         }
 
         public void RenderAfterChildren(RenderEventArgs arg)
@@ -92,7 +116,7 @@ namespace TerrainLoading
                 this.heightTexture.Dispose();
             }
 
-            var storage = new TexImageBitmap(image, GL.GL_RED);
+            var storage = new TexImageBitmap(image);//, GL.GL_RED);
             var heightMapTexture = new Texture(storage,
                 //new TexParameteri(TexParameter.PropertyName.TextureWrapR, (int)GL.GL_CLAMP),
                 new TexParameteri(TexParameter.PropertyName.TextureWrapS, (int)GL.GL_CLAMP),

@@ -35,27 +35,36 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnOpen = new System.Windows.Forms.Button();
             this.openDlg = new System.Windows.Forms.OpenFileDialog();
+            this.rotateCheckBox = new System.Windows.Forms.CheckBox();
+            this.wirefameCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.winGLCanvas1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // winGLCanvas1
             // 
-            this.winGLCanvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.winGLCanvas1.AccumAlphaBits = ((byte)(0));
+            this.winGLCanvas1.AccumBits = ((byte)(0));
+            this.winGLCanvas1.AccumBlueBits = ((byte)(0));
+            this.winGLCanvas1.AccumGreenBits = ((byte)(0));
+            this.winGLCanvas1.AccumRedBits = ((byte)(0));
+            this.winGLCanvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.winGLCanvas1.Location = new System.Drawing.Point(12, 41);
+            this.winGLCanvas1.Location = new System.Drawing.Point(12, 44);
             this.winGLCanvas1.Name = "winGLCanvas1";
             this.winGLCanvas1.RenderTrigger = CSharpGL.RenderTrigger.TimerBased;
-            this.winGLCanvas1.Size = new System.Drawing.Size(1115, 544);
+            this.winGLCanvas1.Size = new System.Drawing.Size(1115, 589);
+            this.winGLCanvas1.StencilBits = ((byte)(0));
             this.winGLCanvas1.TabIndex = 0;
             this.winGLCanvas1.TimerTriggerInterval = 40;
+            this.winGLCanvas1.UpdateContextVersion = true;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblState});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 588);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 639);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1139, 22);
             this.statusStrip1.TabIndex = 3;
@@ -64,7 +73,7 @@
             // lblState
             // 
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(62, 17);
+            this.lblState.Size = new System.Drawing.Size(56, 17);
             this.lblState.Text = "state info";
             // 
             // timer1
@@ -75,19 +84,42 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(12, 12);
+            this.btnOpen.Location = new System.Drawing.Point(12, 13);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.Size = new System.Drawing.Size(75, 25);
             this.btnOpen.TabIndex = 4;
-            this.btnOpen.Text = "Open ...";
+            this.btnOpen.Text = "&Open ...";
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
+            // rotateCheckBox
+            // 
+            this.rotateCheckBox.AutoSize = true;
+            this.rotateCheckBox.Location = new System.Drawing.Point(112, 20);
+            this.rotateCheckBox.Name = "rotateCheckBox";
+            this.rotateCheckBox.Size = new System.Drawing.Size(58, 17);
+            this.rotateCheckBox.TabIndex = 5;
+            this.rotateCheckBox.Text = "&Rotate";
+            this.rotateCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // wirefameCheckBox
+            // 
+            this.wirefameCheckBox.AutoSize = true;
+            this.wirefameCheckBox.Location = new System.Drawing.Point(177, 20);
+            this.wirefameCheckBox.Name = "wirefameCheckBox";
+            this.wirefameCheckBox.Size = new System.Drawing.Size(96, 17);
+            this.wirefameCheckBox.TabIndex = 6;
+            this.wirefameCheckBox.Text = "&Wireframe only";
+            this.wirefameCheckBox.UseVisualStyleBackColor = true;
+            this.wirefameCheckBox.CheckedChanged += new System.EventHandler(this.wirefameCheckBox_CheckedChanged);
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 610);
+            this.ClientSize = new System.Drawing.Size(1139, 661);
+            this.Controls.Add(this.wirefameCheckBox);
+            this.Controls.Add(this.rotateCheckBox);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.winGLCanvas1);
@@ -109,5 +141,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.OpenFileDialog openDlg;
+        private System.Windows.Forms.CheckBox rotateCheckBox;
+        private System.Windows.Forms.CheckBox wirefameCheckBox;
     }
 }

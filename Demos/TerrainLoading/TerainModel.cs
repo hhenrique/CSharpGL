@@ -8,8 +8,8 @@ namespace TerrainLoading
 {
     class TerainModel : IBufferSource
     {
-        public const int TERRAIN_WIDTH = 64;
-        public const int TERRAIN_DEPTH = 64;
+        public const int TERRAIN_WIDTH = 512;
+        public const int TERRAIN_DEPTH = 512;
 
         private uint[] indices = new uint[(2 * TERRAIN_WIDTH + 1) * (TERRAIN_DEPTH - 1)];
 

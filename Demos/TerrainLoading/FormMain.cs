@@ -15,6 +15,8 @@ namespace TerrainLoading
         private Scene scene;
         private ActionList actionList;
 
+        private TerainNode terrainNode;
+
         public FormMain()
         {
             InitializeComponent();
@@ -28,7 +30,8 @@ namespace TerrainLoading
         {
             var rootElement = GetTree();
 
-            var position = new vec3(5, 3, 4) * 0.2f;
+            //var position = new vec3(5, 3, 4) * 0.2f;
+            var position = new vec3(0, 400, -2000);
             var center = new vec3(0, 0, 0);
             var up = new vec3(0, 1, 0);
             var camera = new Camera(position, center, up, CameraType.Perspecitive, this.winGLCanvas1.Width, this.winGLCanvas1.Height);
@@ -47,14 +50,22 @@ namespace TerrainLoading
             this.actionList = list;
 
             var manipulater = new FirstPerspectiveManipulater();
+            //var manipulater = new SatelliteManipulater();
             //manipulater.StepLength = 0.1f;
             manipulater.Bind(camera, this.winGLCanvas1);
+
+            SynchronizeModelAndUI();
         }
 
         private SceneNodeBase GetTree()
         {
-            var node = TerainNode.Create();
-            return node;
+            this.terrainNode = TerainNode.Create();
+            return this.terrainNode;
+        }
+
+        private void SynchronizeModelAndUI()
+        {
+            this.wirefameCheckBox.Checked = this.terrainNode.RenderAsWireframe;
         }
 
         private void winGLCanvas1_OpenGLDraw(object sender, PaintEventArgs e)
@@ -77,11 +88,14 @@ namespace TerrainLoading
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //IWorldSpace node = this.scene.RootElement;
-            //if (node != null)
-            //{
-            //    node.RotationAngle += 1.3f;
-            //}
+            if (this.rotateCheckBox.Checked)
+            {
+                var node = this.scene.RootNode;
+                if (node != null)
+                {
+                    node.RotationAngle += 1.3f;
+                }
+            }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -93,6 +107,11 @@ namespace TerrainLoading
                 var node = this.scene.RootNode as TerainNode;
                 node.UpdateHeightmap(bmp);
             }
+        }
+
+        private void wirefameCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            this.terrainNode.RenderAsWireframe = this.wirefameCheckBox.Checked;
         }
     }
 

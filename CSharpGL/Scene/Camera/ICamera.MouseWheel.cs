@@ -30,6 +30,10 @@
                 IOrthoCamera orthoCamera = camera;
                 orthoCamera.Far += lengthDiff;
                 orthoCamera.Near += lengthDiff;
+
+                System.Console.WriteLine("camera pos:({0},{1},{2}) target:({3},{4},{5})",
+                    camera.Position.x, camera.Position.y, camera.Position.z,
+                    camera.Target.x, camera.Target.y, camera.Target.z);
             }
             //else if (camera.CameraType == CameraTypes.Ortho)
             {

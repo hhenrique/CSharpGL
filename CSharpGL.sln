@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{772765C9-9DD4-487B-8FEB-5EAACA9F955B}"
 EndProject
@@ -102,6 +102,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepthPeeling.FrontToBackPeeling", "Demos\DepthPeeling.FrontToBackPeeling\DepthPeeling.FrontToBackPeeling.csproj", "{A5D2CFC1-5B69-45E3-8A1D-8EE6686F91F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepthPeeling.DualPeeling", "Demos\DepthPeeling.DualPeeling\DepthPeeling.DualPeeling.csproj", "{5B536057-5F5F-4EF7-B4A4-C17B91805A15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sandbox", "Sandbox", "{B0DBC436-C212-4FA2-ACFD-D14C7F1251DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Normal", "Sandbox\Normal\Normal.csproj", "{980A59C0-F4E3-4DF2-AE0C-5CD0907D6B4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -301,6 +305,10 @@ Global
 		{5B536057-5F5F-4EF7-B4A4-C17B91805A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B536057-5F5F-4EF7-B4A4-C17B91805A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B536057-5F5F-4EF7-B4A4-C17B91805A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{980A59C0-F4E3-4DF2-AE0C-5CD0907D6B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{980A59C0-F4E3-4DF2-AE0C-5CD0907D6B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{980A59C0-F4E3-4DF2-AE0C-5CD0907D6B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{980A59C0-F4E3-4DF2-AE0C-5CD0907D6B4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -352,5 +360,9 @@ Global
 		{299CD1FF-2722-4B89-A178-092604436A2F} = {772765C9-9DD4-487B-8FEB-5EAACA9F955B}
 		{A5D2CFC1-5B69-45E3-8A1D-8EE6686F91F4} = {772765C9-9DD4-487B-8FEB-5EAACA9F955B}
 		{5B536057-5F5F-4EF7-B4A4-C17B91805A15} = {772765C9-9DD4-487B-8FEB-5EAACA9F955B}
+		{980A59C0-F4E3-4DF2-AE0C-5CD0907D6B4E} = {B0DBC436-C212-4FA2-ACFD-D14C7F1251DB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30EF34A5-68AD-4BAD-8C64-DF51EACB5388}
 	EndGlobalSection
 EndGlobal
